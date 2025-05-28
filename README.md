@@ -1,6 +1,5 @@
 # Проектная работа "WebLarek. Плохой сервер.", спринт 19
-
-📂 **Репозиторий проекта**: [github.com/Geolog332/bad-server](https://github.com/Geolog332/bad-server)
+https://github.com/Geolog332/bad-server
 
 ## Подготовка к работе
 
