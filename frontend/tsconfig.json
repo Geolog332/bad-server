@@ -2,11 +2,14 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
     "allowJs": true,
-
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -14,7 +17,6 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -22,16 +24,38 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@pages/*": ["./src/pages/*"],
-      "@api": ["./src/utils/weblarek-api.ts"],
-      "@types": ["./src/utils/types"],
-      "@constants": ["./src/utils/constants.ts"],
-      "@components/*": ["./src/components/*"],
-      "@slices/*": ["./src/services/slice/*"],
-      "@store/*": ["./src/services/*"],
-      "@assets/*": ["./src/assets/*"],
+      "@pages/*": [
+        "./src/pages/*"
+      ],
+      "@api": [
+        "./src/utils/weblarek-api.ts"
+      ],
+      "@types": [
+        "./src/utils/types"
+      ],
+      "@constants": [
+        "./src/utils/constants.ts"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@slices/*": [
+        "./src/services/slice/*"
+      ],
+      "@store/*": [
+        "./src/services/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
     }
   },
-  "include": ["src", "vite.config.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

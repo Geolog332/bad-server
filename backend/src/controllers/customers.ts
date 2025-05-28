@@ -116,8 +116,8 @@ export const getCustomers = async (
 
         const options = {
             sort,
-            skip: (Number(page) - 1) * Number(limit),
-            limit: Number(limit),
+            skip: (Number(page) - 1) * Math.min(Number(limit), 10),
+            limit: Math.min(Number(limit), 10),
         }
 
         const users = await User.find(filters, null, options).populate([
@@ -137,7 +137,7 @@ export const getCustomers = async (
         ])
 
         const totalUsers = await User.countDocuments(filters)
-        const totalPages = Math.ceil(totalUsers / Number(limit))
+        const totalPages = Math.ceil(totalUsers / Math.min(Number(limit), 10))
 
         res.status(200).json({
             customers: users,
@@ -145,7 +145,7 @@ export const getCustomers = async (
                 totalUsers,
                 totalPages,
                 currentPage: Number(page),
-                pageSize: Number(limit),
+                pageSize: Math.min(Number(limit), 10),
             },
         })
     } catch (error) {

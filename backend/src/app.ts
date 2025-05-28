@@ -5,25 +5,32 @@ import 'dotenv/config'
 import express, { json, urlencoded } from 'express'
 import mongoose from 'mongoose'
 import path from 'path'
+import rateLimit from 'express-rate-limit'
+import mongoSanitize from 'express-mongo-sanitize'
 import { DB_ADDRESS } from './config'
 import errorHandler from './middlewares/error-handler'
 import serveStatic from './middlewares/serverStatic'
 import routes from './routes'
 
-const { PORT = 3000 } = process.env
-const app = express()
+const { PORT = 3000, ORIGIN_ALLOW = 'http://localhost:5173' } = process.env
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 30,
+})
 
+const app = express()
+app.use(limiter)
 app.use(cookieParser())
 
-app.use(cors())
-// app.use(cors({ origin: ORIGIN_ALLOW, credentials: true }));
+// app.use(cors())
+app.use(cors({ origin: ORIGIN_ALLOW, credentials: true }));
 // app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(serveStatic(path.join(__dirname, 'public')))
 
 app.use(urlencoded({ extended: true }))
 app.use(json())
-
+app.use(mongoSanitize())
 app.options('*', cors())
 app.use(routes)
 app.use(errors())
